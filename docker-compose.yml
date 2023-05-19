@@ -2,7 +2,7 @@ version: '2'
 services:
   registry:
     restart: always
-    image: registry:2.4.1
+    image: registry:2.7
     ports:
       - 5000:5000
     volumes:
