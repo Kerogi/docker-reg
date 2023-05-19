@@ -15,7 +15,7 @@ services:
       - 80:80
     environment:
       - REGISTRY_TITLE=Kerogi's Docker Private Registry
-      - REGISTRY_URL=${HOSTNAME:?Missing hostname variable}:5000
+      - REGISTRY_URL=http://${HOSTNAME:?Missing hostname variable}:5000
       - SINGLE_REGISTRY=true
     depends_on:
       - registry
