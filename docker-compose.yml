@@ -5,11 +5,13 @@ services:
     image: registry:2.7
     ports:
       - 5000:5000
-    environment:
-      - REGISTRY_HTTP_HEADERS_ACCESS-CONTROL-ALLOW-ORIGIN=['https://${HOSTNAME:?Missing hostname variable}']
+    # environment:
+    #   - REGISTRY_HTTP_HEADERS_ACCESS-CONTROL-ALLOW-ORIGIN=['https://${HOSTNAME:?Missing hostname variable}']
     volumes:
       - ./data:/data
       - ./registry-config/:/etc/docker/registry/
+    networks:
+      - registry-ui-net
 
   ui:
     image: joxit/docker-registry-ui:latest
@@ -17,7 +19,13 @@ services:
       - 80:80
     environment:
       - REGISTRY_TITLE=Kerogi's Docker Private Registry
-      - REGISTRY_URL=https://${HOSTNAME:?Missing hostname variable}:5000
+      - NGINX_PROXY_PASS_URL=http://registry:5000     
+      # - REGISTRY_URL=https://${HOSTNAME:?Missing hostname variable}:5000
       - SINGLE_REGISTRY=true
     depends_on:
       - registry
+    networks:
+      - registry-ui-net
+
+networks:
+  registry-ui-net:
