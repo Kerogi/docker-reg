@@ -1,25 +1,29 @@
-
 version: 0.1
+
+log:
+  level: info
+
 
 storage:
   filesystem:
     rootdirectory: /data
   delete:
     enabled: true
+
+
     
 http:
-  addr: 0.0.0.0:5000    
+  addr: :5000    
+  secret: 9ff83df4f3ab64907f4c2d5cd9dbd3ea3a01a7ed96ed3632f07b6c2ebffcbd36
+  tls:
+    certificate: /etc/docker/registry/ssl/fullchain.pem
+    key: /etc/docker/registry/ssl/key.pem
+
+
+
+
 
 auth:
   htpasswd:
     realm: basic-realm
     path: /etc/docker/registry/htpasswd
-
-log:
-  level: info
-  
-http:
-  secret: 9ff83df4f3ab64907f4c2d5cd9dbd3ea3a01a7ed96ed3632f07b6c2ebffcbd36
-  tls:
-    certificate: /etc/docker/registry/ssl/fullchain.pem
-    key: /etc/docker/registry/ssl/key.pem
