@@ -24,7 +24,7 @@ services:
     volumes:
       - ./registry-config/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./registry-config/ssl/fullchain.pem:/etc/nginx/certs/fullchain.pem
-      - ./registry-config/ssl/privkey.pem:/etc/nginx/certs/privkey.pem
+      - ./registry-config/ssl/key.pem:/etc/nginx/certs/key.pem
     depends_on:
       - registry
     networks:
