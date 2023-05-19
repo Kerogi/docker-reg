@@ -8,8 +8,8 @@ services:
     environment:
       - REGISTRY_HTTP_HEADERS_ACCESS-CONTROL-ALLOW-ORIGIN=['http://${HOSTNAME:?Missing hostname variable}']
     volumes:
-      - ./conf/registry-srv:/etc/docker/registry:ro
       - ./data:/data
+      - ./registry-config/:/etc/docker/registry/
 
   ui:
     image: joxit/docker-registry-ui:latest
