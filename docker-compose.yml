@@ -11,6 +11,17 @@ services:
     networks:
       - registry-ui-net
 
+  cleanup:
+    restart: no
+    image: registry:2.7
+    volumes:
+      - ./data:/data
+      - ./registry-config/:/etc/docker/registry/
+    profiles:
+      - clean
+    command: registry garbage-collect /etc/docker/registry/config.yml --delete-untagged
+  
+
   ui:
     image: joxit/docker-registry-ui:latest
     ports:
