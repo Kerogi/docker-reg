@@ -17,11 +17,14 @@ services:
     image: joxit/docker-registry-ui:latest
     ports:
       - 80:80
+      - 443:443
     environment:
       - REGISTRY_TITLE=Kerogi's Docker Private Registry
-      - NGINX_PROXY_PASS_URL=https://registry:5000     
-      # - REGISTRY_URL=https://${HOSTNAME:?Missing hostname variable}:5000
       - SINGLE_REGISTRY=true
+    volumes:
+      - ./registry-config/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./registry-config/ssl/fullchain.pem:/etc/nginx/certs/fullchain.pem
+      - ./registry-config/ssl/key.pem:/etc/nginx/certs/key.pem
     depends_on:
       - registry
     networks:
