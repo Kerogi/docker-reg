@@ -1,7 +1,7 @@
 version: 0.1
 
 log:
-  level: info
+  level: debug
 
 
 storage:
@@ -14,18 +14,19 @@ storage:
     
 http:
   addr: :5000    
-  secret: 9ff83df4f3ab64907f4c2d5cd9dbd3ea3a01a7ed96ed3632f07b6c2ebffcbd36
-  tls:
-    certificate: /etc/docker/registry/ssl/fullchain.pem
-    key: /etc/docker/registry/ssl/key.pem
+  # secret: 9ff83df4f3ab64907f4c2d5cd9dbd3ea3a01a7ed96ed3632f07b6c2ebffcbd36
+  # tls:
+  #   certificate: /etc/docker/registry/ssl/fullchain.pem
+  #   key: /etc/docker/registry/ssl/key.pem
   headers:
     X-Content-Type-Options: [nosniff]
-    Access-Control-Allow-Origin: ['http://docker-reg.kerogi.xyz']
+    Access-Control-Allow-Origin: ['http://localhost']
     Access-Control-Allow-Methods: ['HEAD', 'GET', 'OPTIONS', 'DELETE']
     Access-Control-Allow-Headers: ['Authorization', 'Accept']
     Access-Control-Max-Age: [1728000]
     Access-Control-Allow-Credentials: [true]
     Access-Control-Expose-Headers: ['Docker-Content-Digest']
+
 
 auth:
   htpasswd:
