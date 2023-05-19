@@ -19,7 +19,7 @@ services:
       - 80:80
     environment:
       - REGISTRY_TITLE=Kerogi's Docker Private Registry
-      - NGINX_PROXY_PASS_URL=http://registry:5000     
+      - NGINX_PROXY_PASS_URL=https://registry:5000     
       # - REGISTRY_URL=https://${HOSTNAME:?Missing hostname variable}:5000
       - SINGLE_REGISTRY=true
     depends_on:
