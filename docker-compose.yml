@@ -5,6 +5,8 @@ services:
     image: registry:2.7
     ports:
       - 5000:5000
+    environment:
+      - REGISTRY_HTTP_HEADERS_ACCESS-CONTROL-ALLOW-ORIGIN=['http://${HOSTNAME:?Missing hostname variable}']
     volumes:
       - ./conf/registry-srv:/etc/docker/registry:ro
       - ./data:/data
