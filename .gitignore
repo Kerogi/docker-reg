@@ -1,0 +1,10 @@
+#ignore registry data
+data/
+
+*.save
+
+#ignore certs
+conf/registry-srv/ssl/
+
+#ignore passwd
+conf/registry-srv/htpasswd
