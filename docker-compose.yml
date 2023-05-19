@@ -9,3 +9,13 @@ services:
       - ./conf/registry-srv:/etc/docker/registry:ro
       - ./data:/data
 
+  ui:
+    image: joxit/docker-registry-ui:latest
+    ports:
+      - 80:80
+    environment:
+      - REGISTRY_TITLE=Kerogi's Docker Private Registry
+      - REGISTRY_URL=${HOSTNAME}:5000
+      - SINGLE_REGISTRY=true
+    depends_on:
+      - registry
