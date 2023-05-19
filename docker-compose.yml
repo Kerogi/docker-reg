@@ -6,7 +6,7 @@ services:
     ports:
       - 5000:5000
     environment:
-      - REGISTRY_HTTP_HEADERS_ACCESS-CONTROL-ALLOW-ORIGIN=['http://${HOSTNAME:?Missing hostname variable}']
+      - REGISTRY_HTTP_HEADERS_ACCESS-CONTROL-ALLOW-ORIGIN=['https://${HOSTNAME:?Missing hostname variable}']
     volumes:
       - ./data:/data
       - ./registry-config/:/etc/docker/registry/
@@ -17,7 +17,7 @@ services:
       - 80:80
     environment:
       - REGISTRY_TITLE=Kerogi's Docker Private Registry
-      - REGISTRY_URL=http://${HOSTNAME:?Missing hostname variable}:5000
+      - REGISTRY_URL=https://${HOSTNAME:?Missing hostname variable}:5000
       - SINGLE_REGISTRY=true
     depends_on:
       - registry
